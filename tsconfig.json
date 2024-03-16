@@ -1,6 +1,31 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules/*",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js",
+    ".bundle/*",
+    "coverage",
+    "ios",
+    "android",
+    ".gradle",
+    "web"
+  ]
 }

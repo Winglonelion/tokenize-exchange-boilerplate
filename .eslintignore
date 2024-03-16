@@ -1,0 +1,7 @@
+
+/.expo
+node_modules
+/.prettierrc.js
+/metro.config.js
+/tsconfig.json
+expo-env.d.ts
