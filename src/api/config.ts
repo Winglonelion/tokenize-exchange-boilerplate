@@ -1,5 +1,5 @@
 import { API_HOST_MOBILE } from "@/config/env";
-import { DeviceInfoAccessor } from "@/prodiver/DeviceInfo.mem.accesor";
+import { DeviceInfoAccessor } from "@/providers/DeviceInfo.mem.accesor";
 
 import axios, { AxiosInstance } from "axios";
 

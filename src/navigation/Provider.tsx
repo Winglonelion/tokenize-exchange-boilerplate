@@ -7,8 +7,8 @@ import { Provider as StateProvider } from "react-redux";
 
 import { ApplicationProvider } from "@ui-kitten/components";
 
-import { DeviceInfoProvider } from "@/prodiver/DeviceInfoProvider";
-import FontProvider from "@/prodiver/FontProvider";
+import { DeviceInfoProvider } from "@/providers/DeviceInfoProvider";
+import FontProvider from "@/providers/FontProvider";
 import { queryClient } from "@/services/query";
 import { persistor, store } from "@/states/store";
 

@@ -10,12 +10,8 @@ export async function login(email: string, password: string) {
     captchaBypass: "yWOEjZMIhY",
   };
 
-  try {
-    const instant = AxiosManager.getAxiosInstance(INSTANCE_NAME);
-    return instant.post("auth/login", payload);
-  } catch (error) {
-    throw new Error("Login failed");
-  }
+  const instant = AxiosManager.getAxiosInstance(INSTANCE_NAME);
+  return instant.post("auth/login", payload);
 }
 
 export default login;

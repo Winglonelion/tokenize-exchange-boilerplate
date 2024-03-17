@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 import { StyleSheet, View } from "react-native";
 
-import { Controller, useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 
 import { Layout } from "@ui-kitten/components";
@@ -19,20 +19,9 @@ import LogoSymbolWhite from "@assets/svg/logo-symbol-white.svg";
 import PasswordIcon from "@assets/svg/password-icon.svg";
 import UserEmailIcon from "@assets/svg/user-email-icon.svg";
 
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-
+import useAuthForm from "./auth.form";
+import { styles } from "./auth.styles";
 import useLoginLogic from "./login.logic";
-
-// Define validation schema using yup
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .email("Email is not correct format")
-    .required("Email must not be empty"),
-  password: yup.string().required("Password must not be empty"),
-  keepSignedIn: yup.boolean().required(),
-});
 
 type FormData = {
   email: string;
@@ -46,15 +35,7 @@ const LoginScreen: React.FC = () => {
     control,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm<FormData>({
-    resolver: yupResolver(schema),
-    mode: "onBlur",
-    defaultValues: {
-      email: "",
-      password: "",
-      keepSignedIn: false,
-    },
-  });
+  } = useAuthForm();
 
   const { handleLogin, isPending } = useLoginLogic();
 
@@ -93,7 +74,7 @@ const LoginScreen: React.FC = () => {
       <View style={styles.loginForm}>
         <Controller
           control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <AuthInput
               renderLeftIcon={renderEmailIcon}
               placeholder="Email"
@@ -110,7 +91,7 @@ const LoginScreen: React.FC = () => {
 
         <Controller
           control={control}
-          render={({ field: { onChange, onBlur, value } }) => (
+          render={({ field: { onChange, onBlur } }) => (
             <AuthInput
               renderLeftIcon={renderPasswordIcon}
               placeholder="Password"
@@ -150,91 +131,5 @@ const LoginScreen: React.FC = () => {
     </Layout>
   );
 };
-
-const styles = StyleSheet.create({
-  logo: {
-    position: "absolute",
-    // width: 55,
-    // height: 55,
-    left: 160,
-    top: 80,
-  },
-  titleBox: {
-    position: "absolute",
-    // width: 75,
-    // height: 30,
-    // left: 151,
-    top: 159,
-    fontWeight: "900",
-    fontSize: 23,
-    lineHeight: 30,
-    textAlign: "center",
-    letterSpacing: 0.5,
-    color: "#FFFFFF",
-  },
-  loginForm: {
-    width: "100%",
-    paddingHorizontal: 12,
-  },
-  title: {
-    // fontFamily: 'Roboto',
-    // fontStyle: 'normal',
-    fontWeight: "900",
-    fontSize: 23,
-    lineHeight: 30,
-    textAlign: "center",
-    letterSpacing: 0.5,
-    color: "#FFFFFF",
-  },
-  subTitle: {
-    fontFamily: "Roboto",
-    fontWeight: "500",
-    fontSize: 16,
-    lineHeight: 24,
-    textAlign: "center",
-    letterSpacing: 0.3,
-    color: "#D6DFFF",
-  },
-  forgotPassword: {
-    fontWeight: "500",
-    fontSize: 14,
-    lineHeight: 21,
-    color: "#FFFFFF",
-  },
-  submitSuttonBox: {
-    position: "absolute",
-    width: "100%",
-    paddingHorizontal: 12,
-    top: 516,
-  },
-  button: {
-    borderRadius: 8,
-    backgroundColor: "#BDCFFF",
-    height: 45,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  signUpQuestion: {
-    fontWeight: "500",
-    fontSize: 14,
-    lineHeight: 21,
-    color: "#FFFFFF",
-    textAlign: "center",
-  },
-  strong: {
-    textTransform: "uppercase",
-    fontWeight: "bold",
-  },
-  errorText: {
-    color: "#B30909",
-    fontSize: 12,
-    marginTop: 4,
-    paddingLeft: 4,
-    textShadowColor: "rgba(255, 220, 220, 1)",
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 2,
-    fontWeight: "500",
-  },
-});
 
 export default LoginScreen;
