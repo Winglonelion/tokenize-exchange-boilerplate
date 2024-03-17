@@ -12,6 +12,6 @@ export const selectJwtToken = createSelector(
 );
 
 export const selectIsAuth = createSelector(
-  (state: RootState) => state.auth.user !== undefined,
-  (isAuth) => isAuth,
+  (state: RootState) => state.auth.user,
+  (user) => user !== undefined,
 );

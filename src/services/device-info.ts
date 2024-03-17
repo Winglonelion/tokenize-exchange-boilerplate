@@ -7,3 +7,11 @@ export function getUniqueId() {
 export function getBundleId() {
   return DeviceInfo.getBundleId();
 }
+
+export function getUserAgent() {
+  return DeviceInfo.getUserAgentSync();
+}
+
+export function syncUniqueId() {
+  return DeviceInfo.syncUniqueId();
+}

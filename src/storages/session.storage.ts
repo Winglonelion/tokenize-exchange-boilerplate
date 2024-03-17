@@ -31,6 +31,7 @@ function initEncryptedKey(private_key: string = "magic"): string {
 
 const SessionStorage = StorageProvider.provideStorage({
   id: "session",
+  // replace with your own key
   encryptionKey: initEncryptedKey(),
 });
 
