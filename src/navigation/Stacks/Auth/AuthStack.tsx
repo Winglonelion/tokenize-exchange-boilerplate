@@ -15,7 +15,7 @@ function HomeScreen() {
 
 const Stack = createNativeStackNavigator();
 
-function App() {
+function AuthStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Home" component={HomeScreen} />
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default AuthStack;

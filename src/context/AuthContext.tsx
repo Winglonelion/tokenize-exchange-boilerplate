@@ -40,9 +40,7 @@ export function SessionProvider(props: React.PropsWithChildren) {
   useEffect(() => {
     if (isLoading) {
       InteractionManager.runAfterInteractions(() => {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 500);
+        setIsLoading(false);
       });
     }
   }, [isLoading]);
