@@ -1,6 +1,18 @@
 {
   "name": "thumb_hash",
+  "scripts": {
+    "start": "node ./index.js",
+    "generate-thumb-hash": "node ./generate_thumb_hash.js"
+  },
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.51",
+    "axios": "^1.6.8",
+    "md5": "^2.3.0",
+    "thumbhash": "^0.1.1",
+    "uint8-to-base64": "^0.2.0"
+  }
 }
