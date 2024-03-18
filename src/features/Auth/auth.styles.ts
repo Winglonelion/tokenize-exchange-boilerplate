@@ -1,19 +1,16 @@
 import { StyleSheet } from "react-native";
 
+import { responsiveHeight } from "@/utils/screen";
+
 export const styles = StyleSheet.create({
   logo: {
     position: "absolute",
-    // width: 55,
-    // height: 55,
-    left: 160,
-    top: 80,
+    alignSelf: "center",
+    top: responsiveHeight(80),
   },
   titleBox: {
     position: "absolute",
-    // width: 75,
-    // height: 30,
-    // left: 151,
-    top: 159,
+    top: responsiveHeight(159),
     fontWeight: "900",
     fontSize: 23,
     lineHeight: 30,
@@ -26,8 +23,6 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   title: {
-    // fontFamily: 'Roboto',
-    // fontStyle: 'normal',
     fontWeight: "900",
     fontSize: 23,
     lineHeight: 30,
@@ -54,7 +49,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     paddingHorizontal: 12,
-    top: 516,
+    top: responsiveHeight(516),
   },
   button: {
     borderRadius: 8,

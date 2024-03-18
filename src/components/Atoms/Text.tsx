@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { TextStyle } from "react-native";
+import { StyleSheet, TextStyle } from "react-native";
 
 import { Text as KittenText, TextProps } from "@ui-kitten/components";
 
@@ -10,7 +10,7 @@ interface CustomTextProps extends TextProps {
 
 const Text: React.FC<CustomTextProps> = ({ color, ...rest }) => {
   const textStyle = useMemo(() => {
-    const _color = color ?? rest.style?.color;
+    const _color = color ?? StyleSheet.flatten(rest.style)?.color;
     const res: TextStyle = {};
     if (_color) {
       res["color"] = _color;
@@ -19,7 +19,15 @@ const Text: React.FC<CustomTextProps> = ({ color, ...rest }) => {
     return Object.keys(res).length > 0 ? res : undefined;
   }, [color]);
 
-  return <KittenText {...rest} style={[rest.style, textStyle]} />;
+  return (
+    <KittenText {...rest} style={[defaultStyles.text, textStyle, rest.style]} />
+  );
 };
+
+const defaultStyles = StyleSheet.create({
+  text: {
+    fontFamily: "Roboto",
+  },
+});
 
 export default Text;

@@ -6,4 +6,4 @@
 
 export const API_HOST_MOBILE = "https://api.tokenize-dev.com/mobile-api/";
 
-export const API_PUBLIC_HOST = "https://api.tokenize-dev.com/public/v1/";
+export const API_HOST_PUBLIC = "https://api.tokenize-dev.com/public/v1/";

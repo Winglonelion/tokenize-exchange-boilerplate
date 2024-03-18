@@ -1,16 +1,22 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 
-import authReducer from "./auth.reducer";
 import { mmkvStore } from "./persist.store";
+import authReducer from "./reducers/auth.reducer";
+import marketsReducer from "./reducers/markets.reducer";
 
 const persistConfig = {
   key: "root",
   storage: mmkvStore,
   version: 1,
+  whitelist: ["auth"],
+  blacklist: ["markets"],
 };
 
-export const rootReducer = combineReducers({ auth: authReducer });
+export const rootReducer = combineReducers({
+  auth: authReducer,
+  markets: marketsReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

@@ -5,3 +5,4 @@ node_modules
 /metro.config.js
 /tsconfig.json
 expo-env.d.ts
+# scripts/

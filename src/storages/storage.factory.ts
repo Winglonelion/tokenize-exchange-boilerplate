@@ -6,7 +6,7 @@ import { v5 as uuidv5 } from "uuid";
  * @description Provider for storage
  * All implementations of storage will be communicate with this provider
  */
-class StorageProvider {
+class StorageFactory {
   static provideStorage({
     id,
     path,
@@ -24,4 +24,4 @@ class StorageProvider {
   }
 }
 
-export default StorageProvider;
+export default StorageFactory;

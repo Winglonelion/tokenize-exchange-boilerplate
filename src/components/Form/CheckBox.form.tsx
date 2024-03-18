@@ -1,12 +1,15 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { Control, Controller } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 import {
   CheckBox as UIKittenCheckBox,
   CheckBoxProps,
 } from "@ui-kitten/components";
+
+import Text from "@/components/Atoms/Text";
 
 interface CheckBoxFormProps extends CheckBoxProps {
   name: string;
@@ -19,6 +22,7 @@ const CheckBoxForm: React.FC<CheckBoxFormProps> = ({
   control,
   ...rest
 }) => {
+  const { t } = useTranslation();
   return (
     <Controller
       control={control}
@@ -30,10 +34,11 @@ const CheckBoxForm: React.FC<CheckBoxFormProps> = ({
             checked={value}
             onChange={onChange}
             onBlur={onBlur}
-            status="info"
-          >
+            status="info">
             <Text>
-              <Text style={styles.rememberMe}>Remember me</Text>
+              <Text style={styles.rememberMe}>
+                {t("sign_in.remember_sign_in")}
+              </Text>
             </Text>
           </UIKittenCheckBox>
         </>

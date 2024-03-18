@@ -1,8 +1,7 @@
-import { AxiosManager } from "./config";
+import { AxiosManager } from "./axios.manager";
+import { AXIOS_INSTANCE_NAMES } from "./const";
 
-export const INSTANCE_NAME = "auth";
-
-export async function login(email: string, password: string) {
+export function login(email: string, password: string) {
   const payload = {
     email,
     password,
@@ -10,8 +9,6 @@ export async function login(email: string, password: string) {
     captchaBypass: "yWOEjZMIhY",
   };
 
-  const instant = AxiosManager.getAxiosInstance(INSTANCE_NAME);
+  const instant = AxiosManager.getAxiosInstance(AXIOS_INSTANCE_NAMES.auth);
   return instant.post("auth/login", payload);
 }
-
-export default login;

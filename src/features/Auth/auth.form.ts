@@ -23,8 +23,8 @@ function useAuthForm() {
     resolver: yupResolver(authFormSchema),
     mode: "onBlur",
     defaultValues: {
-      email: "",
-      password: "",
+      email: "tokenize.test@gmail.com",
+      password: "Test#111",
       keepSignedIn: false,
     },
   });

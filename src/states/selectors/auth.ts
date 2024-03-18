@@ -3,13 +3,13 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../store.types";
 
 export const selectUser = createSelector(
-  (state: RootState) => state.auth.user,
-  (user) => user,
+  (state: RootState) => state.auth,
+  (auth) => auth.user,
 );
 
 export const selectJwtToken = createSelector(
-  (state: RootState) => state.auth.user?.token,
-  (token) => token,
+  (state: RootState) => state.auth.user,
+  (user) => user?.token,
 );
 
 export const selectIsAuth = createSelector(

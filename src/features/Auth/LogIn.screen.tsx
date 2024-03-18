@@ -1,18 +1,20 @@
 import React, { useCallback, useMemo } from "react";
-import { StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 
 import { Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import Toast from "react-native-toast-message";
 
 import { Layout } from "@ui-kitten/components";
 
-import Row from "@/components/Atoms/Row";
 import Spacer from "@/components/Atoms/Spacer";
 import Text from "@/components/Atoms/Text";
 import AuthInput from "@/components/Form/AuthInput";
 import CheckBoxForm from "@/components/Form/CheckBox.form";
 import SubmitButton from "@/components/Form/SubmitButton";
+import Row from "@/components/Layout/Row";
 import CommonStyles from "@/styles/common.styles";
+import Screen, { responsiveHeight, responsiveWidth } from "@/utils/screen";
 
 import ColorfulBackground from "@assets/svg/colorful-bg.svg";
 import LogoSymbolWhite from "@assets/svg/logo-symbol-white.svg";
@@ -42,7 +44,6 @@ const LoginScreen: React.FC = () => {
   const onSubmit = useMemo(() => {
     return handleSubmit((data: FormData) => {
       // Handle form submission
-      console.log(data);
       handleLogin(data.email, data.password);
     });
   }, []);
@@ -51,14 +52,40 @@ const LoginScreen: React.FC = () => {
 
   const renderPasswordIcon = useCallback(() => <PasswordIcon />, []);
 
+  const onPressForgotPassword = useCallback(() => {
+    Toast.show({
+      type: "info",
+      text1: t("sign_in.sign_in_forgot_password"),
+      text2: t("sign_in.sub_title_forgot_password"),
+      visibilityTime: 3000,
+    });
+  }, []);
+
+  const onPressSignUp = useCallback(() => {
+    Toast.show({
+      type: "info",
+      text1: t("sign_in.click_sign_up_header"),
+      text2: t("sign_in.click_sign_up_content"),
+      visibilityTime: 3000,
+    });
+  }, []);
+
   return (
     <Layout style={CommonStyles.layout}>
       <View style={StyleSheet.absoluteFill}>
-        <ColorfulBackground style={CommonStyles.flex} />
+        <ColorfulBackground
+          scaleX={Screen.widthRatio}
+          scaleY={Screen.heightRatio}
+          width={responsiveWidth(375)}
+          height={responsiveHeight(667)}
+        />
       </View>
 
       <View style={styles.logo}>
-        <LogoSymbolWhite />
+        <LogoSymbolWhite
+          width={responsiveHeight(55)}
+          height={responsiveHeight(55)}
+        />
       </View>
 
       <View style={styles.titleBox}>
@@ -74,8 +101,12 @@ const LoginScreen: React.FC = () => {
       <View style={styles.loginForm}>
         <Controller
           control={control}
-          render={({ field: { onChange, onBlur } }) => (
+          render={({
+            field: { onChange, onBlur },
+            formState: { defaultValues },
+          }) => (
             <AuthInput
+              defaultValue={defaultValues?.email ?? ""}
               renderLeftIcon={renderEmailIcon}
               placeholder="Email"
               onChangeText={onChange}
@@ -91,8 +122,12 @@ const LoginScreen: React.FC = () => {
 
         <Controller
           control={control}
-          render={({ field: { onChange, onBlur } }) => (
+          render={({
+            field: { onChange, onBlur },
+            formState: { defaultValues },
+          }) => (
             <AuthInput
+              defaultValue={defaultValues?.password ?? ""}
               renderLeftIcon={renderPasswordIcon}
               placeholder="Password"
               onChangeText={onChange}
@@ -107,7 +142,11 @@ const LoginScreen: React.FC = () => {
         <Spacer height={8} />
         <Row>
           <CheckBoxForm name="keepSignedIn" control={control} />
-          <Text style={styles.forgotPassword}>Forgot your password?</Text>
+          <Pressable onPress={onPressForgotPassword}>
+            <Text style={styles.forgotPassword}>
+              {t("sign_in.sign_in_forgot_password")}
+            </Text>
+          </Pressable>
         </Row>
       </View>
 
@@ -116,17 +155,20 @@ const LoginScreen: React.FC = () => {
           loading={isPending}
           disabled={!isValid}
           onPress={onSubmit}
-          style={styles.button}
-        >
+          style={styles.button}>
           <Text category="s1" color="#5073F2">
-            {"Sign In".toUpperCase()}
+            {t("sign_in.sign_in_title").toUpperCase()}
           </Text>
         </SubmitButton>
-        <Spacer height={16} />
-        <Text style={styles.signUpQuestion}>
-          {"Don’t have an account yet? "}
-          <Text style={[styles.signUpQuestion, styles.strong]}>SIGN UP</Text>
-        </Text>
+        <Spacer height={24} />
+        <Pressable onPress={onPressSignUp}>
+          <Text style={styles.signUpQuestion}>
+            {t("sign_in.dont_have_account_cta")}
+            <Text style={[styles.signUpQuestion, styles.strong]}>
+              {t("sign_in.sign_up_title")}
+            </Text>
+          </Text>
+        </Pressable>
       </View>
     </Layout>
   );

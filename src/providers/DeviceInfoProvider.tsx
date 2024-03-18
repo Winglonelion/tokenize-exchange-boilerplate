@@ -29,6 +29,11 @@ interface DeviceInfoProviderProps {
   children: React.ReactNode;
 }
 
+/**
+ * we need to send device info in every requests
+ * This provider ensure device info being fetched and stored in memory
+ * Follow Provider pattern
+ */
 export const DeviceInfoProvider: React.FC<DeviceInfoProviderProps> = ({
   children,
 }) => {
@@ -37,6 +42,8 @@ export const DeviceInfoProvider: React.FC<DeviceInfoProviderProps> = ({
   useEffect(() => {
     const fetchDeviceInfo = async () => {
       try {
+        // sync unique id before get unique id
+        // to ensure unique id is available
         await syncUniqueId();
         const [userAgent, uniqueId] = await Promise.all([
           getUserAgent(),
@@ -55,7 +62,12 @@ export const DeviceInfoProvider: React.FC<DeviceInfoProviderProps> = ({
     fetchDeviceInfo();
   }, []);
 
-  if (!deviceInfo) return null;
+  if (!deviceInfo) {
+    console.log("-------> DEVICE INFO PROBLEM");
+    return null;
+  }
+
+  console.log("-------> DEVICE INFO LOAD SUCCESS");
 
   return (
     <DeviceInfoContext.Provider value={{ deviceInfo }}>

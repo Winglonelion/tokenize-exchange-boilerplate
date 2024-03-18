@@ -19,7 +19,5 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#05ab47",
-  "cSpell.words": [
-    "commitlint"
-  ]
+  "cSpell.words": ["bignumber", "commitlint", "hookform", "tanstack"]
 }

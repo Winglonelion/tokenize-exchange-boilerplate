@@ -1,5 +1,5 @@
-import login from "@/api/auth";
-import { setUser } from "@/states/auth.reducer";
+import { login } from "@/api/auth";
+import { setUser } from "@/states/actions/auth.actions";
 import { useAppDispatch } from "@/states/hooks/use.redux";
 
 import { useMutation } from "@tanstack/react-query";
@@ -8,6 +8,7 @@ const useLoginLogic = () => {
   const dispatch = useAppDispatch();
   const { mutateAsync, isPending, isError, error } = useMutation({
     mutationKey: ["login"],
+    networkMode: "always",
     mutationFn: ({
       username,
       password,

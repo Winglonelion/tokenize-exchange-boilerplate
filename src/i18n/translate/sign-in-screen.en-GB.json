@@ -1,4 +1,11 @@
 {
   "sign_in_title": "Sign in",
-  "sign_in_sub_title": "Please sign in to continue"
+  "sign_in_sub_title": "Please sign in to continue",
+  "remember_sign_in": "Remember me",
+  "sign_in_forgot_password": "Forgot your password?",
+  "sub_title_forgot_password": "Don't worry, i'm also forgot my password.",
+  "sign_up_title": "Sign up",
+  "dont_have_account_cta": "Don’t have an account yet? ",
+  "click_sign_up_header": "Sorry, You are too handsome to sign up",
+  "click_sign_up_content": "please contact admin to get a fan"
 }

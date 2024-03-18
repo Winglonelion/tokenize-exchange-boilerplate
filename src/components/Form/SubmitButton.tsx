@@ -3,9 +3,10 @@ import {
   ActivityIndicator,
   Pressable,
   StyleSheet,
-  Text,
   ViewStyle,
 } from "react-native";
+
+import Text from "@/components/Atoms/Text";
 
 interface SubmitButtonProps {
   disabled?: boolean;
@@ -33,8 +34,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({
     <Pressable
       style={buttonStyles}
       onPress={onPress}
-      disabled={disabled || loading}
-    >
+      disabled={disabled || loading}>
       {loading ? (
         <ActivityIndicator color="white" />
       ) : (

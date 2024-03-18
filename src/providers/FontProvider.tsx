@@ -37,8 +37,11 @@ const FontProvider: React.FC<FontProviderProps> = (props) => {
   });
 
   if (!fontsLoaded) {
+    console.log("-------> FONT LOAD PROBLEM");
     return null;
   }
+
+  console.log("-------> FONT LOAD SUCCESS");
 
   return <>{props.children}</>;
 };

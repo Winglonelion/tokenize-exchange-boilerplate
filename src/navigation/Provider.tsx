@@ -3,10 +3,12 @@ import * as React from "react";
 import * as SplashScreen from "expo-splash-screen";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 import { Provider as StateProvider } from "react-redux";
 
 import { ApplicationProvider } from "@ui-kitten/components";
 
+import AuthProvider from "@/providers/AuthProvider";
 import { DeviceInfoProvider } from "@/providers/DeviceInfoProvider";
 import FontProvider from "@/providers/FontProvider";
 import { queryClient } from "@/services/query";
@@ -34,13 +36,16 @@ export default function NavigationProvider() {
             <PersistGate loading={null} persistor={persistor}>
               <FontProvider>
                 <DeviceInfoProvider>
-                  <AppNavigation />
+                  <AuthProvider>
+                    <AppNavigation />
+                  </AuthProvider>
                 </DeviceInfoProvider>
               </FontProvider>
             </PersistGate>
           </StateProvider>
         </QueryClientProvider>
       </ApplicationProvider>
+      <Toast />
     </SafeAreaProvider>
   );
 }

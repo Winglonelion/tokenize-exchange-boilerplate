@@ -1,10 +1,10 @@
-import StorageProvider from "./storage.provider";
+import StorageFactory from "./storage.factory";
 
 export enum PUBLIC_STORAGE_KEYS {
   current_user_id = "current_user_id",
 }
 
-const PublicStorage = StorageProvider.provideStorage({
+const PublicStorage = StorageFactory.provideStorage({
   id: "public",
 });
 

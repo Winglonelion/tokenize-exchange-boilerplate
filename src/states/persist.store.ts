@@ -9,7 +9,6 @@ export const mmkvStore: Storage = {
   },
   getItem: (key) => {
     const value = SessionStorage.getString(key);
-    console.log("🚀 ~ value:", value);
     return Promise.resolve(value);
   },
   removeItem: (key) => {

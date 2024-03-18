@@ -8,7 +8,6 @@ const storage = SessionStorage;
 
 function useSessionStorage<T>(id: string) {
   const [session, setSession] = useState((): T | undefined => {
-    console.log("trigger init");
     try {
       const dataString = storage.getString(
         SESSION_STORAGE_KEYS.current_user + "_" + id,
