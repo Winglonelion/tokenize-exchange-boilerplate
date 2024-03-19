@@ -185,7 +185,7 @@ src
 
 #### navigation
 
-> Navigation setup for the project. Expo router is a good option, boots time so much when setting up new project. But it's not stable right now, and also have some problem with Redirecting. So, we back to config navigation after one day dealing with known issues in expo-router.
+> Navigation setup for the project. Expo router is a good option, boost time so much when setting up new project. But it's not stable right now, and also have some problem with Redirecting. So, we back to config navigation after one day dealing with known issues in expo-router.
 
 #### providers
 
@@ -224,7 +224,7 @@ src
 #### expo and related uni-modules
 
 > Expo was known as a playground of React Native before. It had slow performance and was heavy, making it hard to configure and install native modules. It wasn’t optimized well on the production level.
-> But the game has changed. From Expo SDK 48, released one year ago, Expo fully supports the new architecture of RN and is lightweight. Expo modules are also handy and perform well compared to other community modules. Reduce so much time working with native config and install, abstracting changes on the native side and boots time of migration or upgrading core libraries and React Native versions, upgrade RN, which was a pain-point, now takes just about hourly and never a headache again. Expo router is also a brilliant solution that can reduce about four steps and time spent working with navigation setup and make the project structure clear and beautiful.
+> But the game has changed. From Expo SDK 48, released one year ago, Expo fully supports the new architecture of RN and is lightweight. Expo modules are also handy and perform well compared to other community modules. Reduce so much time working with native config and install, abstracting changes on the native side and boost time of migration or upgrading core libraries and React Native versions, upgrade RN, which was a pain-point, now takes just about hourly and never a headache again. Expo router is also a brilliant solution that can reduce about four steps and time spent working with navigation setup and make the project structure clear and beautiful.
 
 #### @ui-kitten and @eva-design
 
