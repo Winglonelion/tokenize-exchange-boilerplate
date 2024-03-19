@@ -61,7 +61,7 @@ Check this video for more details.
 
 https://www.youtube.com/watch?v=TqfbAXCCVwE
 
-Which focuses on organizing code to adapt to xwchanges in quickly used technologies, upgrades, repayment of tech debt, multiple branching, and large teams playing.
+Which focuses on organizing code to adapt to changes in code quickly or upgrades, repayment of tech debt, multiple branching, and large teams playing.
 
 #### Conventions
 
@@ -81,7 +81,7 @@ Have some rules be applied to boost the development experiences and help code be
 - Prettier be integrated with Eslint for unified and automatic file format and linting.
 - Husky, commitment, and lint-staged be added to qualify commits
 - import sort and unused variable configured to ensure meaningful changes.
-- Typescript module imports and absolute imports are configured to make import stable and readable. It’s time to quit relative imports hell. It also needs Babel config to make the module resolver work.
+- Typescript module imports and absolute imports are configured to make imports stable and readable. It’s time to quit relative imports hell. It also needs Babel config to make the module resolver work.
 
 ### Project's tree explained
 
