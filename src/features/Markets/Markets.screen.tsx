@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   FlatList as CategoryList,
   Pressable,
@@ -29,6 +35,7 @@ const MarketsScreen: React.FC = () => {
   const mountedRef = React.useRef(false);
   const { data: marketsOverviewResponse } = useMarketsQuery();
   const [category, setCategory] = useState("");
+  const marketListRef = useRef<MarketList<MarketBasicInfo>>(null);
 
   const categories = useMemo(() => {
     return marketsOverviewResponse?.data?.data ?? [];
@@ -63,6 +70,17 @@ const MarketsScreen: React.FC = () => {
       pathsSet.add(path2);
     });
   }, [categories]);
+
+  /**
+   * scroll to top every time category is changed
+   */
+  useEffect(() => {
+    if (!category) return;
+    marketListRef.current?.scrollToIndex({
+      index: 0,
+      animated: false,
+    });
+  }, [category]);
 
   /**
    * update market map to redux store
@@ -156,6 +174,10 @@ const MarketsScreen: React.FC = () => {
     };
   }, []);
 
+  const refetch = useCallback(() => {
+    refetchSummaries();
+  }, []);
+
   return (
     <ScreenContainer>
       <Spacer height={20} />
@@ -182,10 +204,8 @@ const MarketsScreen: React.FC = () => {
       <View
         style={[CommonStyles.flex1, CommonStyles.width100, styles.marketList]}>
         <MarketList
-          onRefresh={() => {
-            console.log("la la la");
-            refetchSummaries();
-          }}
+          ref={marketListRef}
+          onRefresh={refetch}
           refreshing={isRefetching}
           data={selectedList}
           keyExtractor={marketListKeyExtractor}

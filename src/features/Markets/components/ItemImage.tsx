@@ -1,7 +1,9 @@
 import React, { memo } from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import { Image } from "expo-image";
+
+import Platform from "@/utils/platform";
 
 interface ItemImageProps {
   image?: string;
@@ -45,13 +47,13 @@ const styles = StyleSheet.create({
   imageBox: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
-    borderRadius: IMAGE_BORDER_RADIUS,
+    borderRadius: Platform.isAndroid ? IMAGE_SIZE / 2 : IMAGE_BORDER_RADIUS,
     overflow: "hidden",
   },
   shadowBox: {
     width: IMAGE_SIZE,
     height: IMAGE_SIZE,
-    borderRadius: IMAGE_BORDER_RADIUS,
+    borderRadius: Platform.isAndroid ? IMAGE_SIZE / 2 : IMAGE_BORDER_RADIUS,
     shadowColor: "#333333",
     shadowOffset: {
       width: 0,
