@@ -1,8 +1,17 @@
 # react-native-tokenize
 
-A fancy, modern, solid conventions, have good development experience React Native Project and use new techs with well structured.
+A fancy, modern, solid conventions, have good development experience React Native Project. Using new techs with well structured.
 
 > I got flu and a fever recently. Hope everything is going well ...
+
+<!-- <video src="./videos/android.webm" /> -->
+<video width="375" height="667" controls>
+  <source src="./videos/ios.mp4" type="video/mp4">
+</video>
+
+<video width="257" height="600" controls>
+  <source src="./videos/android.mov" type="video/mp4">
+</video>
 
 ## Quick start
 
